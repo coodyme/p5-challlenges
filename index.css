@@ -1,9 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --primary: "#F9CB28";
-  --secondary: "#FF4D4D";
+  --primary: #F9CB28;
+  --secondary: #FF4D4D;
   --background: #000000;
   --foreground: #ffffff;
-  --text: '#666666';
+  --text: #666666;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -16,18 +20,24 @@
   -webkit-text-size-adjust: 100%;
 }
 
+canvas {
+  margin: auto;
+}
+
 a {
   font-weight: 500;
-  color: var(--primary);
   text-decoration: inherit;
+  cursor: pointer;
 }
 
 a:hover {
-  color: var(--secondary);
+  color: var(--primary);
 }
 
 body {
   margin: 0;
+  padding: 0;
+  overflow: hidden;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -37,11 +47,15 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3.2rem;
   line-height: 1.1;
+  padding-bottom: 3.2rem;
+  font-weight: 500;
 }
 
 #content {
+  display: flex;
+  flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -56,33 +70,9 @@ h1 {
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 4em #F9CB28);
+  filter: drop-shadow(0 0 2em #F9CB28);
 }
 
-select {
-  text-align: center;
-  text-align-last: center;
-}
-
-select::selection {
-  background-color: blue;
-  color: rgb(228, 0, 0);
-}
-
-option {
-  text-align: left;
-}
-
-
-
-#challenges {
-  width: 200px;
-  height: 40px;
-  color: #ffffff;
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid #F9CB28;
-}
 
 button {
   border-radius: 5px;
