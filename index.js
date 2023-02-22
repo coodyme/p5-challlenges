@@ -19,8 +19,6 @@ const pages = [
 
 const challenges = document.getElementById('challenges')
 
-const aClass = 'link block mr-4'
-const spanClass = 'mr-2 opacity-50'
 
 pages.forEach((page, index) => {
   let a = document.createElement('a')
@@ -28,8 +26,6 @@ pages.forEach((page, index) => {
   let b = document.createElement('b')
 
   a.href = `pages/${page}/index.html`
-  a.className = aClass
-  span.className = spanClass
   span.innerHTML = padZero(index + 1)
   b.innerHTML = page
 
