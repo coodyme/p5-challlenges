@@ -10,12 +10,14 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
+    "eslint": "^8.34.0",
     "glob": "^8.1.0",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.7",
     "vite": "^4.1.0"
   },
   "dependencies": {
+    "eslint-plugin-p5js": "^1.0.0",
     "p5i": "^0.4.2"
   }
 }

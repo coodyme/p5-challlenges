@@ -1,20 +1,21 @@
-class Square {
-    constructor(x, y, w, h,) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-    }
+export default function createBlock(x, y, w, h) {
+    let posX = x
+    let posY = y
+    let width = w
+    let height = h
 
-    display() {
+    function display(noStroke, fill, rect) {
         noStroke();
         fill(200, 0, 0, 100);
-        rect(this.x, this.y, this.w, this.h)
+        rect(posX, posY, width, height)
     }
 
-    fall() {
-        this.y = this.y + 2;
+    function fall() {
+        posY += 2;
+    }
 
-        
+    return {
+        display,
+        fall
     }
 }

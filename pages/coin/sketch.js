@@ -1,69 +1,114 @@
-var bColor; 
-var pColor;
-var cColor;
-var sColor;
+import { p5i } from 'p5i'
+import createPlayer from './player'
+import createCoin from './coin'
+import createSafe from './safe'
 
-var player;
-var safe;
-var coins = [];
+let bColor;
+let pColor;
+let cColor;
+let sColor;
+
+let player;
+let safe;
+let coins = [];
 
 const PLAYER_RADIUS = 50;
-const SAFE_RADIUS = 100;
+const SAFE_RADIUS = 5;
 const COIN_RADIUS = 25;
 const COIN_AMOUNT = 20;
 
-var input;
+let movingRight = false;
+let movingLeft = false;
+let movingUp = false;
+let movingDown = false;
 
-function setup() {
+
+function setup({
+	windowWidth,
+	windowHeight,
+	color,
+	createCanvas,
+	random,
+	fill,
+	noStroke,
+	ellipse
+}) {
 	createCanvas(windowWidth, windowHeight);
 
 	// Define background, player and coin colors.
-	bColor = color(65);
- 	pColor = color(200, 0, 0, 100);
-	cColor = color(255, 204, 0, 100);
-	sColor = color(200, 200, 200, 100); 
+	bColor = color(0);
+	pColor = color('#F9CB28');
+	cColor = color('#666666');
+	sColor = color('#ffffff');
 
 	// Create player object.
-	player = new Player(width/2, height/2, PLAYER_RADIUS, this.pColor);
+	player = createPlayer(windowWidth / 2, windowHeight / 2, PLAYER_RADIUS, pColor);
+	player.display(fill, noStroke, ellipse)
 
+	let radius = (windowWidth + windowHeight) / SAFE_RADIUS
 	// Create safe zone object.
-	safe = new Safe(width/2, height/2, SAFE_RADIUS, this.sColor);
+	safe = createSafe(windowWidth / 2, windowHeight / 2, radius, sColor);
 
 	// Create coins to display on the screen.
-	for(let i = 0; i < COIN_AMOUNT; i++) {
-		let x = random(COIN_RADIUS, width - COIN_RADIUS);
-		let y = random(COIN_RADIUS, height - COIN_RADIUS);
-		coins[i] = new Coin(x, y, COIN_RADIUS, this.cColor);
+	for (let i = 0; i < COIN_AMOUNT; i++) {
+		let x = random(COIN_RADIUS, windowWidth - COIN_RADIUS);
+		let y = random(COIN_RADIUS, windowHeight - COIN_RADIUS);
+		coins[i] = createCoin(x, y, COIN_RADIUS, cColor)
 	}
 }
 
-function draw() {
+function draw({ background, noFill, fill, noStroke, ellipse, strokeWeight, stroke, dist }) {
 	background(bColor);
 
-	player.display();
+	player.display(fill, noStroke, ellipse);
+	player.move(movingRight, movingLeft, movingUp, movingDown)
 
-	safe.display();
+	safe.display(noFill, strokeWeight, stroke, ellipse);
 
-	for(let coin of coins) {
-		coin.pulse();
-		coin.display();
+	for (let coin of coins) {
+		coin.pulse(fill, noStroke, ellipse);
+		coin.display(fill, noStroke, ellipse);
+		if (isColliding(player, coin, dist)) {
+			coins.splice(coins.indexOf(coin), 1)
+		}
 	}
 }
 
-function keyPressed() {
-	if (keyIsDown(UP_ARROW)) {
-		player.move();
-	}
+function isColliding(player, coin, dist) {
+	let playerPos = player.getPosition()
+	let coinPos = coin.getPosition()
+	let d = dist(playerPos.x, playerPos.y, coinPos.x, coinPos.y);
+	return (d <= player.radius / 2)
+}
 
-	else if (keyIsDown(LEFT_ARROW)) {
-		player.move();
+function keyPressed({ key }) {
+	if (key == 'w') {
+		movingUp = true;
 	}
-
-	else if(keyIsDown(DOWN_ARROW)) {
-		player.move();
+	if (key == 'a') {
+		movingLeft = true;
 	}
-
-	else if (keyIsDown(RIGHT_ARROW)) {
-		player.move();
+	if (key == 's') {
+		movingDown = true;
+	}
+	if (key == 'd') {
+		movingRight = true;
 	}
 }
+
+function keyReleased({ key }) {
+	if (key == 'w') {
+		movingUp = false;
+	}
+	if (key == 'a') {
+		movingLeft = false;
+	}
+	if (key == 's') {
+		movingDown = false;
+	}
+	if (key == 'd') {
+		movingRight = false;
+	}
+}
+
+p5i({ setup, draw, keyPressed, keyReleased }, document.getElementById('sketch'))

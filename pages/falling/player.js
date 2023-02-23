@@ -1,18 +1,21 @@
-class Player {
-    constructor(x, y, w, h,) {
-        this.x = x;
-        this.y = y;
-        this.w = w;
-        this.h = h;
-    }
+export default function createPlayer(x, y, w, h) {
+    let posX = x
+    let posY = y
+    let width = w
+    let height = h
 
-    display() {
+    function display() {
         noStroke();
-        fill(0, 0, 0, 100);
-        rect(this.x, this.y, this.w, this.h)
+        fill(0, 0, 0, 100)
+        rect(posX, posY, width, height)
     }
 
-    move() {
+    function move() {
 
+    }
+
+    return {
+        display,
+        move
     }
 }

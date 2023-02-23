@@ -1,18 +1,41 @@
-class Player {
-    constructor(x, y, r, color) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.color = color;
+export default function createPlayer(x, y, r, color) {
+    let posX = x
+    let posY = y
+    let radius = r
+    let speed = 5
+
+    function move(movingRight, movingLeft, movingUp, movingDown) {
+        if (movingRight) {
+            posX += speed;
+        }
+        if (movingLeft) {
+            posX -= speed;
+        }
+        if (movingUp) {
+            posY -= speed;
+        }
+        if (movingDown) {
+            posY += speed;
+        }
     }
 
-    move(x, y, velocity) {
-        
+    function getPosition() {
+        return {
+            x: posX,
+            y: posY
+        }
     }
 
-    display() {
-        fill(this.color);
+    function display(fill, noStroke, ellipse) {
+        fill(color);
         noStroke();
-        ellipse(this.x, this.y, this.r);
+        ellipse(posX, posY, radius);
+    }
+
+    return {
+        getPosition,
+        radius,
+        move,
+        display
     }
 }

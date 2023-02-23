@@ -14,7 +14,7 @@ const pages = [
   'shmup',
   'simon',
   'snake',
-  'spral',
+  'spiral',
 ]
 
 const challenges = document.getElementById('challenges')
@@ -35,7 +35,7 @@ pages.forEach((page, index) => {
 })
 
 function padZero(num) {
-  if (num < 10 ) {
+  if (num < 10) {
     return `00${num}`
   } else if (num => 10 && num < 100) {
     return `0${num}`

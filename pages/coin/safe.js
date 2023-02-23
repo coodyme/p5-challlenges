@@ -1,15 +1,20 @@
-class Safe {
-    constructor(x, y, r, color) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.color = color;
-    }
+export default function createSafe(x, y, r, c) {
+    let posX = x
+    let posY = y
+    let radius = r
+    let color = c
 
-    display() {
+    function display(noFill, strokeWeight, stroke, ellipse) {
         noFill();
         strokeWeight(2);
-        stroke(this.color)
-        ellipse(this.x, this.y, this.r);
+        stroke(color)
+        ellipse(posX, posY, radius);
+    }
+
+    return {
+        posX,
+        posY,
+        radius,
+        display
     }
 }

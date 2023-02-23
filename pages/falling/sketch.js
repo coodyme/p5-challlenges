@@ -1,12 +1,14 @@
+import { p5i } from 'p5i';
 
-function setup() {
-	createCanvas(500, 500);
+const { mount, createCanvas, background } = p5i()
+
+function setup({ windowHeight, windowWidth }) {
+	createCanvas(windowWidth, windowHeight);
 }
 
 function draw() {
-	background(25);
+	background(0)
 }
 
-function keyPressed() {
+mount(document.getElementById('sketch'), { setup, draw })
 
-}

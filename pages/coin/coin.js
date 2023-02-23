@@ -1,18 +1,30 @@
-class Coin {
-    constructor(x, y, r, color) {
-        this.x = x;
-        this.y = y;
-        this.r = r;
-        this.color = color;
-    } 
+export default function createCoin(x, y, r, c) {
+    let posX = x
+    let posY = y
+    let radius = r
+    let color = c
 
-    pulse() {
+    function pulse(fill, noStroke, ellipse) { }
 
-    }
-    
-    display() {
-        fill(this.color);
+    function display(fill, noStroke, ellipse) {
+        fill(color);
         noStroke();
-        ellipse(this.x, this.y, this.r);
+        ellipse(posX, posY, radius);
+    }
+
+    function getPosition() {
+        return {
+            x: posX,
+            y: posY
+        }
+    }
+
+    return {
+        getPosition,
+        posX,
+        posY,
+        radius,
+        pulse,
+        display
     }
 }
