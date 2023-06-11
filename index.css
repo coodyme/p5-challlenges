@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: #F9CB28;
-  --secondary: #FF4D4D;
+  --primary: #ed225d;
   --background: #000000;
   --foreground: #ffffff;
   --text: #666666;
@@ -81,7 +80,7 @@ h1 {
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em #F9CB28);
+  filter: drop-shadow(0 0 2em #ed225d);
 }
 
 
@@ -98,7 +97,7 @@ button {
 }
 
 button:hover {
-  border-color: #F9CB28;
+  border-color: #ed225d;
 }
 
 button:focus,

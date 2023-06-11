@@ -52,7 +52,7 @@ export default function createSnake(createVector) {
 
   function show(noStroke, fill, rect, SCALE) {
     noStroke();
-    fill('#F9CB28');
+    fill('#ed225d');
     for (let i = 0; i < node.length; i++) {
       rect(node[i].x, node[i].y, SCALE, SCALE)
     }

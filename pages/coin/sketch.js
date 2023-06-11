@@ -37,7 +37,7 @@ function setup({
 
 	// Define background, player and coin colors.
 	bColor = color(0);
-	pColor = color('#F9CB28');
+	pColor = color('#ed225d');
 	cColor = color('#666666');
 	sColor = color('#ffffff');
 

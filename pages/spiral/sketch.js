@@ -17,7 +17,7 @@ function setup({ windowHeight, windowWidth }) {
 	let cx = windowWidth / 2.0;
 	let cy = windowHeight / 2.0;
 
-	fill('#F9CB28');
+	fill('#ed225d');
 	for (let j = 0; j < 10; j++) {
 		setTimeout(() => {
 			for (let i = 0; i <= ENTITY_AMOUNT; ++i) {

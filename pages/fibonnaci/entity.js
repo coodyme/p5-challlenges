@@ -6,7 +6,7 @@ export default function createEntity(a, d, windowWidth, windowHeight, createVect
   let diameter = d;
 
   function show(noStroke, strokeWeight, fill, ellipse) {
-    noStroke('#F9CB28');
+    noStroke('#ed225d');
     strokeWeight(2)
     fill('#000');
     ellipse(position.x, position.y, diameter, diameter);

@@ -18,7 +18,7 @@ function setup() {
 	timer.style("font-size", "40px");
 
 	time = createP("...");
-	time.style('color', '#F9CB28')
+	time.style('color', '#ed225d')
 	time.style("font-size", "80px");
 
 	let div = createDiv()

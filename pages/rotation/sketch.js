@@ -38,7 +38,7 @@ function draw({ windowWidth }) {
 	for (let z = 0; z < windowWidth; z += w) {
 		push();
 		translate(0, 0, z - windowWidth / 2);
-		stroke('#F9CB28')
+		stroke('#ed225d')
 		box(w, w, 0);
 		pop();
 	}
